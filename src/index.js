@@ -10,8 +10,19 @@ dotenv.config({
   path: "./env",
 });
 
-connectDB();
-
+connectDB() // async method jab bhi complete hota hai, ek promise return karta hai
+.then(()=>{
+  app.on("error",(error)=>{     // db toh connect ho gya hai, express ki app h bo baat nhi kar pa rhi 
+    console.log(`Application does not able to talk to the database. ERROR: ${error}`);
+    throw error
+  })
+  app.listen(process.env.PORT || 8000, ()=>{
+    console.log(`Application is listening on port ${process.env.PORT}`);
+  })
+})
+.catch((err)=>{
+  console.log(`Mongo db connection failed !!! ${err}`);
+})
 
 
 
