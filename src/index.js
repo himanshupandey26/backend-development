@@ -1,3 +1,42 @@
+// require("dotenv").config({ path: "./env" }); // disturb code consistency
+import dotenv from "dotenv"; // lekin yeh likhne se chalega nhi, config bhi karna hota hai
+// yeh import method documentation me available nhi hai, but we can use it by experimental feature ke through use kar skte hai, go to package.json - In script, "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+
+// env variable me jab bhi changes hoge, manually run karna hoga fir se
+
+import connectDB from "./db/index.js"; // ./db or ./db/index.js
+
+dotenv.config({
+  path: "./env",
+});
+
+connectDB();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // first approach to connect database but this pollute the index.js file
 import mongoose from "mongoose";
 import { DB_NAME } from "./constants";
@@ -28,3 +67,5 @@ const app = express();
     throw error;
   }
 })();
+
+*/
