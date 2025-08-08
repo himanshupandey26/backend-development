@@ -5,7 +5,7 @@ exports.deleteTodo = async(req,res)=>{
         const {id} = req.params;
         const deletedTodo = await Todo.findByIdAndDelete(id);
 
-        console.log(`Deleted Todo: `,deletedTodo);
+        // console.log(`Deleted Todo: `,deletedTodo);
         res.status(200).json({
             success:true,
             message:`Todo deleted successfully`,
@@ -14,7 +14,7 @@ exports.deleteTodo = async(req,res)=>{
     }
     catch(error){
         console.error(error.message);
-        console.log(error.message);
+        // console.log(error.message);
         res.status(500).json({
             success:false,
             message:`Issue while deleting todo.`,

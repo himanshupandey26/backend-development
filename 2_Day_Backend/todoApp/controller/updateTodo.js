@@ -2,12 +2,12 @@ const Todo = require("../models/Todo");
 
 exports.updateTodo = async(req,res)=>{
     try{
-        const {title="",description=""} = req.body;
         const {id} = req.params;
+        const {title="",description=""} = req.body;
 
-        const modifiedTodo = await Todo.findByIdAndUpdate(id,
+        const modifiedTodo = await Todo.findByIdAndUpdate({_id:id},
             {
-                title,description
+                title,description,updatedAt:Date.now(),
             }, {new:true}
         )
 

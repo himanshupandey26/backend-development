@@ -35,12 +35,19 @@ exports.getTodoByID = async(req,res)=>{
     try{
         // const id = req.params.id;
         const {id} = req.params;
-        const todo = await Todo.find({_id:id});
+        const todo = await Todo.findById({_id:id});
+
+        if(!todo){
+            res.status(404).json({
+                success:false,
+                message:`No data found with given ID .`,
+            })
+        }
 
         console.log(`Todo found: `,todo);
         res.status(200).json({
                 success:true,
-                message:`Todo found.`,
+                message:`Todo ${id} data successfully fetched.`,
                 data:todo,
             })
     }
